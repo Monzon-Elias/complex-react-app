@@ -3,9 +3,11 @@ import Axios from "axios"
 import { useParams, Link } from "react-router-dom"
 import LoadingDotsIcon from "./LoadingDotsIcon"
 import StateContext from "../StateContext"
+import DispatchContext from "../DispatchContext"
 
 function ProfileFollowing(props) {
   const appState = useContext(StateContext)
+  const appDispatch = useContext(DispatchContext)
   const { username } = useParams()
   const [isLoading, setIsLoading] = useState(true)
   const [posts, setPosts] = useState([])
@@ -19,7 +21,7 @@ function ProfileFollowing(props) {
         setPosts(response.data)
         setIsLoading(false)
       } catch (e) {
-        console.log("There was a problem.")
+        appDispatch({ type: "flashMessage", value: "there was a problem or the request was cancelled", alertType: "alert-danger" })
       }
     }
     fetchPosts()

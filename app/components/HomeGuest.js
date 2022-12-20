@@ -163,7 +163,7 @@ function HomeGuest() {
           appDispatch({ type: "login", data: resp.data })
           appDispatch({ type: "flashMessage", value: "Congrats! Welcome to your new account", alertType: "alert-success" })
         } catch (error) {
-          console.log("there was a problem or the request was cancelled")
+          appDispatch({ type: "flashMessage", value: "there was a problem or the request was cancelled", alertType: "alert-danger" })
         }
       }
       fetchResults()

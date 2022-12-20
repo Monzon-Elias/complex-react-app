@@ -89,13 +89,13 @@ function EditPost() {
         if (resp.data) {
           dispatch({ type: "fetchComplete", value: resp.data })
           if (appState.user.username != resp.data.author.username) {
-            appDispatch({ type: "flashMessage", value: "You do not have permission to edit that post" })
+            appDispatch({ type: "flashMessage", value: "You do not have permission to edit that post", alertType: "alert-warning" })
             //redirect to homepage
             navigate("/")
           }
         } else dispatch({ type: "notFound" })
       } catch (error) {
-        console.log("something went wrong or the request was cancelled")
+        appDispatch({ type: "flashMessage", value: "there was a problem or the request was cancelled", alertType: "alert-danger" })
       }
     }
     fetchPost()
@@ -110,9 +110,9 @@ function EditPost() {
         try {
           const resp = await Axios.post(`/post/${state.id}/edit`, { title: state.title.value, body: state.body.value, token: appState.user.token }, { cancelToken: ourRequest.token })
           dispatch({ type: "saveRequestFinished" })
-          appDispatch({ type: "flashMessage", value: "Post was updated!" })
+          appDispatch({ type: "flashMessage", value: "Post was updated!", alertType: "alert-success" })
         } catch (error) {
-          console.log("something went wrong or the request was cancelled")
+          appDispatch({ type: "flashMessage", value: "there was a problem or the request was cancelled", alertType: "alert-danger" })
         }
       }
       fetchPost()

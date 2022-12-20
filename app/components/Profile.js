@@ -8,8 +8,10 @@ import ProfilePosts from "./ProfilePosts"
 import ProfileFollowers from "./ProfileFollowers"
 import ProfileFollowing from "./ProfileFollowing"
 import { useImmer } from "use-immer"
+import DispatchContext from "../DispatchContext"
 
 function Profile() {
+  const appDispatch = useContext(DispatchContext)
   const { username } = useParams()
   const appState = useContext(StateContext)
   const [state, setState] = useImmer({
@@ -34,7 +36,7 @@ function Profile() {
           draft.profileData = response.data
         })
       } catch (e) {
-        console.log("There was a problem.")
+        appDispatch({ type: "flashMessage", value: "there was a problem or the request was cancelled", alertType: "alert-danger" })
       }
     }
     fetchData()
@@ -60,7 +62,7 @@ function Profile() {
             draft.followActionLoading = false
           })
         } catch (e) {
-          console.log("There was a problem.")
+          appDispatch({ type: "flashMessage", value: "there was a problem or the request was cancelled", alertType: "alert-danger" })
         }
       }
       fetchData()
@@ -87,7 +89,7 @@ function Profile() {
             draft.followActionLoading = false
           })
         } catch (e) {
-          console.log("There was a problem.")
+          appDispatch({ type: "flashMessage", value: "there was a problem or the request was cancelled", alertType: "alert-danger" })
         }
       }
       fetchData()

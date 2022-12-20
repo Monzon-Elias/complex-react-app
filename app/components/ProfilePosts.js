@@ -4,8 +4,10 @@ import { useParams, Link } from "react-router-dom"
 import LoadingDotsIcon from "./LoadingDotsIcon"
 import StateContext from "../StateContext"
 import Post from "./Post"
+import DispatchContext from "../DispatchContext"
 
 function ProfilePosts(props) {
+  const appDispatch = useContext(DispatchContext)
   const appState = useContext(StateContext)
   const { username } = useParams()
   const [isLoading, setIsLoading] = useState(true)
@@ -20,7 +22,7 @@ function ProfilePosts(props) {
         setPosts(response.data)
         setIsLoading(false)
       } catch (e) {
-        console.log("There was a problem.")
+        appDispatch({ type: "flashMessage", value: "there was a problem or the request was cancelled", alertType: "alert-danger" })
       }
     }
     fetchPosts()

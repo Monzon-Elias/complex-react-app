@@ -52,6 +52,7 @@ function Main() {
         return
       case "flashMessage":
         draft.flashMessages.push(action.value)
+        draft.alertType = action.alertType
         return
       case "openSearch":
         draft.isSearchOpen = true

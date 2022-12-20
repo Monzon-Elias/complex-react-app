@@ -111,7 +111,7 @@ function Profile() {
     })
   }
 
-  if (!response.data) return <NotFound />
+  if (!state.profileData) return <NotFound />
   else
     return (
       <Page title="Profile Screen">

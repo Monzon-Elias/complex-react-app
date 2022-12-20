@@ -99,10 +99,10 @@ function Main() {
           const resp = await Axios.post("/checkToken", { token: state.user.token }, { cancelToken: ourReq.token })
           if (!resp.data) {
             dispatch({ type: "logout" })
-            dispatch({ type: "flashMessage", value: "Your session has expired. Please, login again" })
+            dispatch({ type: "flashMessage", value: "Your session has expired. Please, login again", alertType: "alert-danger" })
           }
         } catch (error) {
-          dispatch({ type: "flashMessage", value: "there was a problem or the request was canceled" })
+          dispatch({ type: "flashMessage", value: "there was a problem or the request was canceled", alertType: "alert-danger" })
         }
       }
       fetchResults()

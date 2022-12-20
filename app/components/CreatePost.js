@@ -21,7 +21,7 @@ function CreatePost() {
         token: appState.user.token
       })
       //redirect to new post url
-      appDispatch({ type: "flashMessage", value: "Congrats, you successfully created a post!" })
+      appDispatch({ type: "flashMessage", value: "Congrats, you successfully created a post!", alertType: "alert-success" })
       navigate(`/post/${resp.data}`)
       console.log("post created!")
     } catch (e) {

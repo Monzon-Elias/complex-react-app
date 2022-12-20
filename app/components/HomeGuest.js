@@ -161,7 +161,7 @@ function HomeGuest() {
         try {
           const resp = await Axios.post("/register", { username: state.username.value, email: state.email.value, password: state.password.value }, { cancelToken: ourReq.token })
           appDispatch({ type: "login", data: resp.data })
-          appDispatch({ type: "flashMessage", value: "Congrats! Welcome to your new account" })
+          appDispatch({ type: "flashMessage", value: "Congrats! Welcome to your new account", alertType: "alert-success" })
         } catch (error) {
           console.log("there was a problem or the request was cancelled")
         }

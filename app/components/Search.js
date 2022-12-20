@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from "react"
 import DispatchContext from "../DispatchContext"
 import { useImmer } from "use-immer"
 import Axios from "axios"
-import { Link } from "react-router-dom"
 import Post from "./Post"
 
 function Search() {
@@ -48,7 +47,7 @@ function Search() {
             draft.show = "results"
           })
         } catch (error) {
-          console.log("there was a problem or the request was cancelled")
+          appDispatch({ type: "flashMessage", value: "there was a problem or the request was cancelled", alertType: "alert-danger" })
         }
       }
       fetchResults()

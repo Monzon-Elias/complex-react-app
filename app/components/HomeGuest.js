@@ -130,7 +130,7 @@ function HomeGuest() {
           const resp = await Axios.post("/doesUsernameExist", { username: state.username.value }, { cancelToken: ourReq.token })
           dispatch({ type: "usernameUniqueResults", value: resp.data })
         } catch (error) {
-          console.log("there was a problem or the request was cancelled")
+          appDispatch({ type: "flashMessage", value: "there was a problem or the request was cancelled", alertType: "alert-danger" })
         }
       }
       fetchResults()
@@ -146,7 +146,7 @@ function HomeGuest() {
           const resp = await Axios.post("/doesEmailExist", { email: state.email.value }, { cancelToken: ourReq.token })
           dispatch({ type: "emailUniqueResults", value: resp.data })
         } catch (error) {
-          console.log("there was a problem or the request was cancelled")
+          appDispatch({ type: "flashMessage", value: "there was a problem or the request was cancelled", alertType: "alert-danger" })
         }
       }
       fetchResults()

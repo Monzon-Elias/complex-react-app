@@ -31,24 +31,8 @@ function HomeGuest() {
     submitCount: 0
   }
 
-  function emptyInput(field) {
-    if (draft.field.value.length < 1) {
-      draft.field.hasErrors = true
-      draft.field.message = field + " is required"
-    }
-  }
-
   function ourReducer(draft, action) {
     switch (action.type) {
-      case "emptyUsername":
-        emptyInput(username)
-        return
-      case "emptyEmail":
-        emptyInput(email)
-        return
-      case "emptyPassword":
-        emptyInput(password)
-        return
       case "usernameImmediately":
         draft.username.hasErrors = false
         draft.username.value = action.value
@@ -189,7 +173,6 @@ function HomeGuest() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    dispatch({ type: "emptyUsername", value: state.username.value })
     dispatch({ type: "emptyEmail", value: state.username.value })
     dispatch({ type: "emptyPassword", value: state.username.value })
     dispatch({ type: "usernameImmediately", value: state.username.value })

@@ -9,12 +9,20 @@ function HeaderLoggedOut(props) {
 
   const handleSubmit = async e => {
     e.preventDefault()
+    if (username.length < 1) {
+      appDispatch({ type: "flashMessage", value: "Username required" })
+      return
+    }
+    if (password.length < 1) {
+      appDispatch({ type: "flashMessage", value: "Password required" })
+      return
+    }
     try {
-      const response = await Axios.post("/login", {
+      const resp = await Axios.post("/login", {
         username,
         password
       })
-      response.data ? appDispatch({ type: "login", data: response.data })(appDispatch({ type: "flashMessage", value: "You have successfully logged in!" })) : console.log("Incorrect username / password")(appDispatch({ type: "flashMessage", value: "Invalid username / password" }))
+      resp.data ? appDispatch({ type: "login", data: resp.data })(appDispatch({ type: "flashMessage", value: "You have successfully logged in!" })) : appDispatch({ type: "flashMessage", value: "Invalid username / password" })
     } catch (error) {
       console.log(error)
     }
@@ -23,10 +31,10 @@ function HeaderLoggedOut(props) {
     <form onSubmit={handleSubmit} className="mb-0 pt-2 pt-md-0">
       <div className="row align-items-center">
         <div className="col-md mr-0 pr-md-0 mb-3 mb-md-0">
-          <input onChange={e => setUsername(e.target.value)} name="username" className="form-control form-control-sm input-dark" type="text" placeholder="Username" autoComplete="off" />
+          <input onChange={e => setUsername(e.target.value)} name="username" className={"form-control form-control-sm input-dark " + password.length < 1 ? "is-invalid" : ""} type="text" placeholder="Username" autoComplete="off" />
         </div>
         <div className="col-md mr-0 pr-md-0 mb-3 mb-md-0">
-          <input onChange={e => setPassword(e.target.value)} name="password" className="form-control form-control-sm input-dark" type="password" placeholder="Password" />
+          <input onChange={e => setPassword(e.target.value)} name="password" className={"form-control form-control-sm input-dark " + password.length < 1 ? "is-invalid" : ""} type="password" placeholder="Password" />
         </div>
         <div className="col-md-auto">
           <button className="btn btn-success btn-sm">Sign In</button>

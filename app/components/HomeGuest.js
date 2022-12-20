@@ -173,8 +173,6 @@ function HomeGuest() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    dispatch({ type: "emptyEmail", value: state.username.value })
-    dispatch({ type: "emptyPassword", value: state.username.value })
     dispatch({ type: "usernameImmediately", value: state.username.value })
     dispatch({ type: "usernameAfterDelay", value: state.username.value, noRequest: true })
     dispatch({ type: "emailImmediately", value: state.email.value })

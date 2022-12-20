@@ -1,7 +1,5 @@
 body {
   font-family: "Public Sans", sans-serif;
-  background-color: #212529;
-  color: #fff;
 }
 
 .header-bar {
@@ -59,8 +57,7 @@ body {
 .body-content {
   font-size: 1.2rem;
   line-height: 1.75;
-  /*color: #292929;*/
-  color: #fff;
+  color: #292929;
 }
 
 .body-content p,
@@ -238,11 +235,13 @@ textarea.tall-textarea {
   opacity: 0;
   transition: all 0.3s ease-out;
   transform: scale(1.07);
+  visibility: hidden;
 }
 
 .live-search-results--visible {
   opacity: 1;
   transform: scale(1);
+  visibility: visible;
 }
 
 .search-overlay-top {
@@ -418,7 +417,7 @@ textarea.tall-textarea {
 .chat-other .chat-message-inner {
   padding: 4px 7px;
   border-radius: 12px;
-  background-color: gray;
+  background-color: #f1f0f0;
 }
 
 .chat-message a {

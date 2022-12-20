@@ -30,6 +30,7 @@ function Main() {
   const initialState = {
     loggedIn: Boolean(localStorage.getItem("complexappToken")),
     flashMessages: [],
+    alertType: "",
     user: {
       token: localStorage.getItem("complexappToken"),
       username: localStorage.getItem("complexappUsername"),
@@ -112,7 +113,7 @@ function Main() {
     <StateContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>
         <BrowserRouter>
-          <FlashMessages messages={state.flashMessages} />
+          <FlashMessages messages={state.flashMessages} alertType={state.alertType} />
           <Header />
           <Suspense fallback={<LoadingDotsIcon />}>
             <Routes>

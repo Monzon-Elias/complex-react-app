@@ -10,11 +10,11 @@ function HeaderLoggedOut(props) {
   const handleSubmit = async e => {
     e.preventDefault()
     if (!username) {
-      appDispatch({ type: "flashMessage", value: "Username required" })
+      appDispatch({ type: "flashMessage", value: "Username required", alertType: "alert-danger" })
       return
     }
     if (!password) {
-      appDispatch({ type: "flashMessage", value: "Password required" })
+      appDispatch({ type: "flashMessage", value: "Password required", alertType: "alert-danger" })
       return
     }
     try {

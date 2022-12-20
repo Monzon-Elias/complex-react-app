@@ -100,7 +100,7 @@ function Main() {
             dispatch({ type: "flashMessage", value: "Your session has expired. Please, login again" })
           }
         } catch (error) {
-          console.log("there was a problem or the request was cancelled")
+          dispatch({ type: "flashMessage", value: "there was a problem or the request was canceled" })
         }
       }
       fetchResults()

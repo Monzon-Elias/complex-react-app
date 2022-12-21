@@ -20,7 +20,7 @@ function Profile() {
     stopFollowingRequestCount: 0,
     profileData: {
       profileUsername: "...",
-      profileAvatar: "https://s.gravatar.com/avatar/d9b1a188bca73af1e526a314f536dc4d?s=80",
+      profileAvatar: "https://gravatar.com/avatar/placeholder?s=128",
       isFollowing: false,
       counts: { postCount: "", followerCount: "", followingCount: "" }
     }

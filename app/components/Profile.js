@@ -28,7 +28,6 @@ function Profile() {
 
   useEffect(() => {
     const ourRequest = Axios.CancelToken.source()
-
     async function fetchData() {
       try {
         const response = await Axios.post(`/profile/${username}`, { token: appState.user.token }, { cancelToken: ourRequest.token })
@@ -43,7 +42,7 @@ function Profile() {
     return () => {
       ourRequest.cancel()
     }
-  }, [username])
+  }, [])
 
   useEffect(() => {
     if (state.startFollowingRequestCount) {
@@ -77,9 +76,7 @@ function Profile() {
       setState(draft => {
         draft.followActionLoading = true
       })
-
       const ourRequest = Axios.CancelToken.source()
-
       async function fetchData() {
         try {
           const response = await Axios.post(`/removeFollow/${state.profileData.profileUsername}`, { token: appState.user.token }, { cancelToken: ourRequest.token })
